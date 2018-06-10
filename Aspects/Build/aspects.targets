@@ -1,0 +1,10 @@
+﻿<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="aspects.tasks.targets" />
+  <Target Name="Weave" AfterTargets="AfterBuild">
+    <SampleTask Input="$(OutDir)">
+      <Output PropertyName="SampleOutputValue" TaskParameter="Output" />
+    </SampleTask>
+    <Message Text="Result of SampleTask is $(SampleOutputValue)" Importance="High" />
+    <Inject Target="$(TargetPath)"  />
+  </Target>
+</Project>  
